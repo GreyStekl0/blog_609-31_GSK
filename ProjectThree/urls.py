@@ -22,5 +22,5 @@ from ProjectThree import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage),
-    path('about/', views.about, kwargs={"company_name": "FooBar", "company_phone": 8800353535})
+    path('about/', views.about)
 ]
