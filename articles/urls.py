@@ -3,5 +3,5 @@ from articles import views
 
 urlpatterns = [
     path('', views.article_list),
-    path('<int:article_id>', views.article_item),
+    path('<slug:slug>', views.article_item, name='article_detail'),
 ]
