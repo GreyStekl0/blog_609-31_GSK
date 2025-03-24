@@ -7,27 +7,27 @@
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <a href="{% url 'homepage' %}">
-                <img src="{% static 'images/logo.png' %}" alt="Site Logo">
-            </a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="{% url 'homepage' %}">Home</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'articles' %}">Articles</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <div class="logo">
+        <a href="{% url 'homepage' %}">
+            <img src="{% static 'images/logo.png' %}" alt="Site Logo">
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{% url 'homepage' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'articles' %}">Articles</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <main>
-        {% block content %}{% endblock content %}
-    </main>
+<main>
+    {% block content %}{% endblock content %}
+</main>
 
-    <footer>
-        <p>© {% now "Y" %} Stekl0</p>
-    </footer>
+<footer>
+    <p>© {% now "Y" %} Stekl0</p>
+</footer>
 </body>
 </html>
