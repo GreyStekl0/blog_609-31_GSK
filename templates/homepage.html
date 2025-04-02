@@ -10,9 +10,6 @@
         
         <div class="homepage-actions">
             <a href="{% url 'articles' %}" class="action-button">Browse Articles</a>
-            {% if not user.is_authenticated %}
-                <a href="{% url 'signup' %}" class="action-button">Join Now</a>
-            {% endif %}
         </div>
     </div>
 {% endblock content %}
