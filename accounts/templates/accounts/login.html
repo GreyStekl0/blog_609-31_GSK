@@ -2,10 +2,15 @@
 {% block title %}Login{% endblock title %}
 
 {% block content %}
-    <h1>Login</h1>
-    <form class="form" action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Login</button>
-    </form>
+    <div class="auth-container">
+        <h1 class="form-title">Login</h1>
+        <form class="form" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+        <div class="auth-options">
+            <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+        </div>
+    </div>
 {% endblock content %}

@@ -2,41 +2,39 @@
 {% block title %}Article List{% endblock title %}
 
 {% block content %}
-    <nav>
-        <ul>
-            {% if user.is_authenticated %}
-                <li>
-                    <form class="logout-form" action="{% url 'logout' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit">Logout</button>
-                    </form>
-                </li>
-            {% else %}
-                <li>
-                    <a href="{% url 'login' %}">Login</a>
-                </li>
-            {% endif %}
-        </ul>
-    </nav>
+    <div class="user-auth-status">
+        {% if user.is_authenticated %}
+            <div class="user-welcome">
+                <p>Welcome, {{ user.username }}!</p>
+                <form class="logout-form" action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="auth-button logout-button">Logout</button>
+                </form>
+            </div>
+        {% else %}
+            <div class="login-signup-links">
+                <a href="{% url 'login' %}" class="auth-button login-button">Login</a>
+                <a href="{% url 'signup' %}" class="auth-button signup-button">Sign Up</a>
+            </div>
+        {% endif %}
+    </div>
 
-    <main>
-        <h1>Article List</h1>
-        <div class="articles">
-            {% for element in articles %}
-                <div class="article__item">
-                    <h2>
-                        <a href="{% url 'article_detail' slug=element.slug %}">
-                            {{ element.title }}
-                        </a>
-                    </h2>
-                    <p>
-                        {{ element.snippet }}
-                    </p>
-                    <time>
-                        {{ element.date }}
-                    </time>
-                </div>
-            {% endfor %}
-        </div>
-    </main>
+    <h1>Articles</h1>
+    <div class="articles">
+        {% for element in articles %}
+            <div class="article__item">
+                <h2>
+                    <a href="{% url 'article_detail' slug=element.slug %}">
+                        {{ element.title }}
+                    </a>
+                </h2>
+                <p>
+                    {{ element.snippet }}
+                </p>
+                <time>
+                    {{ element.date }}
+                </time>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock content %}

@@ -1,13 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>About</title>
-</head>
-<body>
-<h1>{{ header }}</h1>
-<p>Director: {{ director.name }}</p>
-<p>Address: {{ address.0 }}, {{ address.1 }},{{ address.2 }}, {{ address.3 }}</p>
-<p>Staff: {{ staff.0 }}, {{ staff.1 }}, {{ staff.2 }}</p>
-</body>
-</html>
+{% extends "base_layout.html" %}
+{% block title %}About{% endblock title %}
+
+{% block content %}
+    <div class="about-container">
+        <h1>{{ header }}</h1>
+        
+        <div class="about-section">
+            <h2>Director</h2>
+            <p>{{ director.name }}</p>
+        </div>
+        
+        <div class="about-section">
+            <h2>Address</h2>
+            <address>
+                {{ address.0 }}, {{ address.1 }}, {{ address.2 }}, {{ address.3 }}
+            </address>
+        </div>
+        
+        <div class="about-section">
+            <h2>Our Staff</h2>
+            <ul class="staff-list">
+                {% for member in staff %}
+                    <li>{{ member }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock content %}
