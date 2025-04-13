@@ -180,6 +180,74 @@ nav ul li a:hover {
     font-size: 0.9rem;
 }
 
+/* Article Create Form */
+.form textarea {
+    width: 100%;
+    padding: var(--spacing);
+    border: 1px solid var(--form-border);
+    border-radius: var(--radius);
+    font-size: 16px;
+    min-height: 200px;
+    resize: vertical;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.form input[type="file"] {
+    width: 100%;
+    padding: var(--spacing);
+    margin-bottom: var(--spacing);
+    background-color: var(--bg-light);
+    border: 1px dashed var(--form-border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.form input[type="file"]:hover {
+    background-color: rgba(52, 152, 219, 0.05);
+    border-color: var(--primary-color);
+}
+
+.form .file-preview {
+    max-width: 100%;
+    height: auto;
+    margin-top: var(--spacing);
+    border-radius: var(--radius);
+}
+
+/* Стили для заголовка формы создания статьи */
+h1 + .form {
+    margin-top: var(--spacing-lg);
+}
+
+/* Специальная кнопка создания статьи */
+.form button[type="submit"] {
+    background-color: var(--secondary-color);
+    padding: 12px 25px;
+    font-weight: 600;
+    display: block;
+    width: 100%;
+    margin-top: var(--spacing-lg);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form button[type="submit"]:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+}
+
+.form button[type="submit"]:active {
+    transform: translateY(0);
+}
+
 /* Buttons */
 .form button,
 .action-button,
