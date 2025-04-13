@@ -4,13 +4,13 @@
 {% block content %}
     <div class="auth-container">
         <h1 class="form-title">Sign Up</h1>
-        <form class="form" action="{% url 'signup' %}" method="post">
+        <form class="form" action="{% url 'accounts:signup' %}" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Sign up</button>
         </form>
         <div class="auth-options">
-            <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+            <p>Already have an account? <a href="{% url 'accounts:login' %}">Login</a></p>
         </div>
     </div>
 {% endblock content %}

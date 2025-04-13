@@ -90,6 +90,14 @@ header {
     color: var(--primary-color);
 }
 
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: var(--spacing-xl);
+}
+
 nav ul {
     display: flex;
     list-style: none;
@@ -210,6 +218,9 @@ nav ul li a:hover {
     padding: 8px 20px;
     font-size: 1rem;
     text-decoration: none;
+    display: inline-block;
+    border-radius: var(--radius);
+    transition: background-color 0.3s ease, filter 0.3s ease;
 }
 
 .auth-button:hover {
@@ -267,13 +278,31 @@ nav ul li a:hover {
 
 .logout-form {
     display: inline;
+    margin: 0;
 }
 
 /* User Auth Status */
+.user-auth-status {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.user-welcome {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.user-welcome p {
+    margin: 0;
+    margin-right: var(--spacing-md);
+}
+
 .login-signup-links {
     display: flex;
     gap: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
+    margin: 0;
 }
 
 /* Articles */
@@ -389,6 +418,28 @@ nav ul li a:hover {
         flex-direction: column;
     }
 
+    nav {
+        flex-direction: column;
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .user-auth-status {
+        margin-left: 0;
+        margin-top: var(--spacing-md);
+    }
+    
+    .user-welcome {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .user-welcome p {
+        margin-right: 0;
+        margin-bottom: var(--spacing-sm);
+    }
+    
     nav {
         margin-top: var(--spacing-md);
     }
