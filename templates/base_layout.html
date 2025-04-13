@@ -17,7 +17,7 @@
         <ul>
             <li><a href="{% url 'homepage' %}">Home</a></li>
             <li><a href="{% url 'about' %}">About</a></li>
-            <li><a href="{% url 'articles:list' %}">Articles</a></li>
+{#            <li><a href="{% url 'articles:list' %}">Articles</a></li> / Зачем две одинаковых кнопки, да? #}
         </ul>
         <div class="user-auth-status">
             {% if user.is_authenticated %}

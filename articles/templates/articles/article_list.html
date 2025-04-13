@@ -3,6 +3,11 @@
 
 {% block content %}
     <h1>Articles</h1>
+    {% if user.is_authenticated %}
+        <div class="homepage-actions">
+            <a href="{% url 'articles:create' %}" class="action-button">Create article</a>
+        </div>
+    {% endif %}
     <div class="articles">
         {% for element in articles %}
             <div class="article__item">
