@@ -1,23 +1,26 @@
 {% extends "base_layout.html" %}
-{% block title %}{{ article.title }}{% endblock title %}}
+{% block title %}{{ article.title }}{% endblock title %}
 {% block content %}
     <div class="article-detail {% if article.thumbnail %}with-bg-image{% endif %}"
          {% if article.thumbnail %}style="background-image: url('{{ article.thumbnail.url }}');"{% endif %}>
         <div class="article-content">
             <h1>{{ article.title }}</h1>
             <p>{{ article.body }}</p>
-            {% if user.is_authenticated and user.id == article.author.id %}
-                <div>
-                    <a class="btn btn-warning"
-                       href="{% url 'articles:update' slug=article.slug %}">
-                        Update
-                    </a>
-                    <a class="btn btn-danger"
-                       href="{% url 'articles:delete' slug=article.slug %}">
-                        Delete
-                    </a>
-                </div>
-            {% endif %}
         </div>
     </div>
 {% endblock content %}
+
+{% block footer_buttons %}
+    {% if user.is_authenticated and user.id == article.author.id %}
+        <div class="footer-buttons">
+            <a class="btn btn-warning"
+               href="{% url 'articles:update' slug=article.slug %}">
+                Update
+            </a>
+            <a class="btn btn-danger"
+               href="{% url 'articles:delete' slug=article.slug %}">
+                Delete
+            </a>
+        </div>
+    {% endif %}
+{% endblock %}

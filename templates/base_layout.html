@@ -43,7 +43,10 @@
 </main>
 
 <footer>
-    <p>© {% now "Y" %} Stekl0</p>
+    <div class="footer-content">
+        <p>© {% now "Y" %} Stekl0</p>
+        {% block footer_buttons %}{% endblock %}
+    </div>
 </footer>
 </body>
 </html>
