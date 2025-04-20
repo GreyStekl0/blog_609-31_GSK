@@ -5,7 +5,7 @@
          {% if article.thumbnail %}style="background-image: url('{{ article.thumbnail.url }}');"{% endif %}>
         <div class="article-content">
             <h1>{{ article.title }}</h1>
-            <p>{{ article.body }}</p>
+            <p class="lead">{{ article.body }}</p>
         </div>
     </div>
 {% endblock content %}
@@ -17,7 +17,7 @@
                href="{% url 'articles:update' slug=article.slug %}">
                 Update
             </a>
-            <a class="btn btn-danger"
+            <a class="btn btn-danger ms-2"
                href="{% url 'articles:delete' slug=article.slug %}">
                 Delete
             </a>

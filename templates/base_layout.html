@@ -6,49 +6,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Default title{% endblock title %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-<header>
-    <div class="logo">
-        <a href="{% url 'homepage' %}">
-            <img src="{% static 'images/logo.png' %}" alt="Site Logo">
-        </a>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="{% url 'homepage' %}">Home</a></li>
-            <li><a href="{% url 'about' %}">About</a></li>
-{#            <li><a href="{% url 'articles:list' %}">Articles</a></li> / Зачем две одинаковых кнопки, да? #}
-        </ul>
-        <div class="user-auth-status">
-            {% if user.is_authenticated %}
-                <div class="user-welcome">
-                    <p>Welcome, {{ user.username }}!</p>
-                    <form class="logout-form" action="{% url 'accounts:logout' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="auth-button logout-button">Logout</button>
-                    </form>
+<header class="mb-4">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a href="{% url 'homepage' %}" class="navbar-brand d-flex align-items-center">
+                <img src="{% static 'images/logo.png' %}" alt="Site Logo" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'homepage' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                    </li>
+                </ul>
+                
+                <div class="user-auth-status">
+                    {% if user.is_authenticated %}
+                        <div class="user-welcome d-flex align-items-center">
+                            <span class="me-3 mb-0">Welcome, {{ user.username }}!</span>
+                            <form class="logout-form mb-0 d-flex align-items-center" action="{% url 'accounts:logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                            </form>
+                        </div>
+                    {% else %}
+                        <div class="login-signup-links">
+                            <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-sm me-2">Login</a>
+                            <a href="{% url 'accounts:signup' %}" class="btn btn-success btn-sm">Sign Up</a>
+                        </div>
+                    {% endif %}
                 </div>
-            {% else %}
-                <div class="login-signup-links">
-                    <a href="{% url 'accounts:login' %}" class="auth-button login-button">Login</a>
-                    <a href="{% url 'accounts:signup' %}" class="auth-button signup-button">Sign Up</a>
-                </div>
-            {% endif %}
+            </div>
         </div>
     </nav>
 </header>
 
-<main>
+<main class="container">
     {% block content %}{% endblock content %}
 </main>
 
-<footer>
-    <div class="footer-content">
-        <p>© {% now "Y" %} Stekl0</p>
-        {% block footer_buttons %}{% endblock %}
+<footer class="mt-5 pt-3 border-top">
+    <div class="container">
+        <div class="footer-content d-flex justify-content-between align-items-center">
+            <p class="mb-0">© {% now "Y" %} Stekl0</p>
+            <div>{% block footer_buttons %}{% endblock %}</div>
+        </div>
     </div>
 </footer>
 </body>

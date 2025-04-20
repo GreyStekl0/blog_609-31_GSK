@@ -1,14 +1,23 @@
 {% extends "base_layout.html" %}
 {% load static %}
+{% load django_bootstrap5 %}
 {% block title %}Delete {{ article.title }}{% endblock title %}
 {% block content %}
-    <div class="article-confirm-delete">
-        <h1>Are you sure?</h1>
-        <p>Do you really want to delete the article "{{ article.title }}"? This action cannot be undone.</p>
-        <form method="post">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Yes, delete </button>
-            <a href="{% url 'homepage' %}" class="btn btn-secondary">Cancel</a>
-        </form>
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-body text-center p-4">
+                    <h1 class="card-title">Are you sure?</h1>
+                    <p class="card-text mb-4">Do you really want to delete the article "{{ article.title }}"? This action cannot be undone.</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-flex justify-content-center gap-3">
+                            <button type="submit" class="btn btn-danger">Yes, delete</button>
+                            <a href="{% url 'homepage' %}" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock content %}

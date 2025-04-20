@@ -2,28 +2,34 @@
 {% block title %}About{% endblock title %}
 
 {% block content %}
-    <div class="about-container">
-        <h1>{{ header }}</h1>
-        
-        <div class="about-section">
-            <h2>Director</h2>
-            <p>{{ director.name }}</p>
-        </div>
-        
-        <div class="about-section">
-            <h2>Address</h2>
-            <address>
-                {{ address.0 }}, {{ address.1 }}, {{ address.2 }}, {{ address.3 }}
-            </address>
-        </div>
-        
-        <div class="about-section">
-            <h2>Our Staff</h2>
-            <ul class="staff-list">
-                {% for member in staff %}
-                    <li>{{ member }}</li>
-                {% endfor %}
-            </ul>
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <h1 class="card-title mb-4">{{ header }}</h1>
+                    
+                    <div class="mb-4">
+                        <h2 class="h4">Director</h2>
+                        <p>{{ director.name }}</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h2 class="h4">Address</h2>
+                        <address>
+                            {{ address.0 }}, {{ address.1 }}, {{ address.2 }}, {{ address.3 }}
+                        </address>
+                    </div>
+                    
+                    <div>
+                        <h2 class="h4">Our Staff</h2>
+                        <ul class="list-group">
+                            {% for member in staff %}
+                                <li class="list-group-item">{{ member }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock content %}

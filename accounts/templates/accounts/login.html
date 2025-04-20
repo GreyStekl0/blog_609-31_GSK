@@ -1,19 +1,26 @@
 {% extends "base_layout.html" %}
+{% load django_bootstrap5 %}
 {% block title %}Login{% endblock title %}
 
 {% block content %}
-    <div class="auth-container">
-        <h1 class="form-title">Login</h1>
-        <form class="form" action="{% url 'accounts:login' %}" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            {% if request.GET.next %}
-                <input type="hidden" name="next" value="{{ request.GET.next }}">
-            {% endif %}
-            <button type="submit">Login</button>
-        </form>
-        <div class="auth-options">
-            <p>Don't have an account? <a href="{% url 'accounts:signup' %}">Sign up</a></p>
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <h1 class="card-title text-center mb-4">Login</h1>
+                    <form action="{% url 'accounts:login' %}" method="post">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        {% if request.GET.next %}
+                            <input type="hidden" name="next" value="{{ request.GET.next }}">
+                        {% endif %}
+                        {% bootstrap_button "Login" button_type="submit" button_class="btn-primary w-100" %}
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Don't have an account? <a href="{% url 'accounts:signup' %}">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock content %}
